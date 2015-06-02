@@ -2,6 +2,7 @@ import argparse
 
 from flask import Flask
 from flask import render_template
+import standings
 app = Flask(__name__)
 
 @app.route("/")
@@ -10,7 +11,8 @@ def hello():
 
 @app.route("/standings")
 def get_standings():
-    return render_template("standings.html")
+    results = standings.calculate()
+    return render_template("standings.html", standings=results)
 
 
 parser = argparse.ArgumentParser()
