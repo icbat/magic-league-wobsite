@@ -6,7 +6,11 @@ app = Flask(__name__)
 
 @app.route("/")
 def hello():
-    return "hello!"
+    return render_template("landing.html")
+
+@app.route("/standings")
+def get_standings():
+    return render_template("standings.html")
 
 
 parser = argparse.ArgumentParser()
