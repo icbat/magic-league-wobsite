@@ -11,7 +11,7 @@ def hello():
 
 @app.route("/standings")
 def get_standings():
-    results = standings.calculate()
+    results = standings.get()
     return render_template("standings.html", standings=results)
 
 
