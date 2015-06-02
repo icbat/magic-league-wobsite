@@ -4,7 +4,8 @@ def get():
     return calculateStandings()
 
 """takes a list of MatchRecords"""
-def calculateStandings(matches):
+def calculateStandings(matchSlips):
+    matches = flattenSlips(matchSlips)
     standings = setupEmptyStandings(matches)
     for match in matches:
         reporterPoints = 0
@@ -53,3 +54,8 @@ def wonMatch(name, match):
         losses = match.wins
 
     return wins > losses
+
+class Match:
+    def __init__(self, won, opponent):
+        self.won = won
+        self.opponent = opponent

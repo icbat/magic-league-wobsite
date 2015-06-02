@@ -1,4 +1,4 @@
-from standings import calculateStandings, wonMatch
+from standings import calculateStandings, wonMatch, flattenMatches
 from match import MatchRecord
 
 def test_noMatches():
@@ -48,3 +48,8 @@ def test_winLoss():
     assert(wonMatch("finkel", match) == True)
     assert(wonMatch("lsv", match) == False)
     assert(wonMatch("frankerz", match) == False)
+
+def test_flatten_oneMatch():
+    flattened = flattenMatches(MatchRecord("lsv", 1, "finkel", 2))
+
+    assert(len(flattened) == 2)
