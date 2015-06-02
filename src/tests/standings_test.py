@@ -44,5 +44,7 @@ def test_multipleMatches_getsPoints():
 
 def test_winLoss():
     match = MatchRecord("lsv", 1, "finkel", 2)
+
     assert(wonMatch("finkel", match) == True)
     assert(wonMatch("lsv", match) == False)
+    assert(wonMatch("frankerz", match) == False)
