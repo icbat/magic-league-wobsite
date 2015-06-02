@@ -5,20 +5,23 @@ def get():
 
 """takes a list of MatchRecords"""
 def calculateStandings(matches):
-    standings = []
-
-    for player in findPlayers(matches):
-        standings.append(Player(player))
+    standings = setupEmptyStandings(matches)
 
     return standings
 
-def findPlayers(matches):
+def setupEmptyStandings(matches):
     players = set([])
 
     for match in matches:
         players.add(match.reporter)
         players.add(match.opponent)
-    return players
+
+    standings = set([])
+
+    for player in players:
+        standings.add(Player(player))
+
+    return standings
 
 class Player:
     def __init__(self, name):

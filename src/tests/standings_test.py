@@ -23,7 +23,7 @@ def test_multipleMatches_dontCreateDuplicates():
 
     assert(len(standings) == 2)
 
-def ignoreForNow_winsAreCounted():
+def test_winsAreCounted():
     results = [MatchRecord("lsv", 1, "finkel", 2)]
 
     standings = calculateStandings(results)
