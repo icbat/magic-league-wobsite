@@ -6,6 +6,16 @@ def get():
 """takes a list of MatchRecords"""
 def calculateStandings(matches):
     standings = setupEmptyStandings(matches)
+    for match in matches:
+        reporterOld = standings[match.reporter]
+
+        standings[match.reporter] = reporterOld + 1
+
+        opponentOld = standings[match.opponent]
+
+        standings[match.opponent] = opponentOld + 3
+
+
 
     return standings
 
@@ -16,14 +26,9 @@ def setupEmptyStandings(matches):
         players.add(match.reporter)
         players.add(match.opponent)
 
-    standings = set([])
+    playerRecords = {}
 
     for player in players:
-        standings.add(Player(player))
+        playerRecords[player] = 0
 
-    return standings
-
-class Player:
-    def __init__(self, name):
-        self.name = name
-        self.wins = 0
+    return playerRecords

@@ -23,15 +23,21 @@ def test_multipleMatches_dontCreateDuplicates():
 
     assert(len(standings) == 2)
 
-def test_winsAreCounted():
+def test_countWins():
     results = [MatchRecord("lsv", 1, "finkel", 2)]
 
     standings = calculateStandings(results)
 
-    for player in standings:
-        if (player.name == "lsv"):
-            assert(player.wins == 1)
-        elif (player.name == "finkel"):
-            assert(player.wins == 2)
-        else:
-            assert(False)
+    assert(standings["lsv"] == 1)
+    assert(standings["finkel"] == 3)
+
+def ignore_multipleMatches_getsPoints():
+    results = [
+        MatchRecord("lsv", 1, "finkel", 2),
+        MatchRecord("lsv", 2, "finkel", 0),
+        ]
+
+    standings = calculateStandings(results)
+
+    assert(standings["lsv"] == 4)
+    assert(standings["finkel"] == 4)
