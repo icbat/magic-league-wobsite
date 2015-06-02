@@ -32,3 +32,6 @@ def setupEmptyStandings(matches):
         playerRecords[player] = 0
 
     return playerRecords
+
+def wonMatch(name, match):
+    return False
