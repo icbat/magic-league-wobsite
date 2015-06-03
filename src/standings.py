@@ -14,6 +14,7 @@ def calculatePoints(matchSlips):
             points = points + (3 if match.won else 1)
         standings[player] = points
 
+
     return standings
 
 def setupEmptyStandings(matchSlips):

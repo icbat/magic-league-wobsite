@@ -28,8 +28,8 @@ def test_countWins():
 
     standings = calculatePoints(results)
 
-    assert(standings["lsv"] == 1)
-    assert(standings["finkel"] == 3)
+    assert(standings["lsv"] == 3)
+    assert(standings["finkel"] == 5)
 
 def test_multipleMatches_getsPoints():
     results = [
@@ -40,9 +40,21 @@ def test_multipleMatches_getsPoints():
     standings = calculatePoints(results)
 
     print(standings["lsv"])
-    assert(standings["lsv"] == 4)
+    assert(standings["lsv"] == 6)
     print(standings["finkel"])
-    assert(standings["finkel"] == 4)
+    assert(standings["finkel"] == 6)
+
+def test_multipleOpponents_countedCorrectly():
+    results = [
+        MatchRecord("lsv", 1, "finkel", 2),
+        MatchRecord("lsv", 2, "pv", 0),
+    ]
+
+
+    standings = calculatePoints(results)
+
+    print(standings["lsv"])
+    assert(standings["lsv"] == 8)
 
 def test_winLoss():
     match = MatchRecord("lsv", 1, "finkel", 2)
