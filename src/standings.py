@@ -10,8 +10,12 @@ def calculatePoints(matchSlips):
     standings = {}
     for player in records:
         points = 0
+
+        opponents = set([])
         for match in records[player]:
             points = points + (3 if match.won else 1)
+            opponents.add(match.opponent)
+        points = points + (2 * len(opponents))
         standings[player] = points
 
 

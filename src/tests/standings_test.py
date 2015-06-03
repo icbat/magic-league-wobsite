@@ -39,9 +39,7 @@ def test_multipleMatches_getsPoints():
 
     standings = calculatePoints(results)
 
-    print(standings["lsv"])
     assert(standings["lsv"] == 6)
-    print(standings["finkel"])
     assert(standings["finkel"] == 6)
 
 def test_multipleOpponents_countedCorrectly():
@@ -53,7 +51,6 @@ def test_multipleOpponents_countedCorrectly():
 
     standings = calculatePoints(results)
 
-    print(standings["lsv"])
     assert(standings["lsv"] == 8)
 
 def test_winLoss():
