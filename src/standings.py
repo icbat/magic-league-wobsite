@@ -5,43 +5,35 @@ def get():
 
 """takes a list of MatchRecords"""
 def calculateStandings(matchSlips):
-    matches = flattenSlips(matchSlips)
-    standings = setupEmptyStandings(matches)
-    for match in matches:
-        reporterPoints = 0
-        opponentPoints = 0
-        if (wonMatch(match.reporter, match)):
-            reporterPoints = 3
-            opponentPoints = 1
-        else:
-            reporterPoints = 1
-            opponentPoints = 3
+    records = setupEmptyStandings(matchSlips)
+    flattenMatches(matchSlips, records)
+    standings = {}
+    for player in records:
+        points = 0
+        print
+        print player
 
-        reporterOld = standings[match.reporter]
-
-        standings[match.reporter] = reporterOld + reporterPoints
-
-        opponentOld = standings[match.opponent]
-
-        standings[match.opponent] = opponentOld + opponentPoints
-
-
+        for match in records[player]:
+            print match
+            print "points before: " + str(points)
+            points = points + (3 if match.won else 1)
+            print "points after: " + str(points)
+        standings[player] = points
 
     return standings
 
-def setupEmptyStandings(matches):
-    players = set([])
+def setupEmptyStandings(matchSlips):
+    standings = {}
 
-    for match in matches:
-        players.add(match.reporter)
-        players.add(match.opponent)
+    for match in matchSlips:
+        standings[match.reporter] = []
+        standings[match.opponent] = []
+    return standings
 
-    playerRecords = {}
-
-    for player in players:
-        playerRecords[player] = 0
-
-    return playerRecords
+def flattenMatches(matchSlips, standings):
+    for match in matchSlips:
+        standings[match.reporter].append(Match(match.reporter, match))
+        standings[match.opponent].append(Match(match.opponent, match))
 
 def wonMatch(name, match):
     wins = 0
@@ -55,7 +47,11 @@ def wonMatch(name, match):
 
     return wins > losses
 
+
+
 class Match:
-    def __init__(self, won, opponent):
-        self.won = won
-        self.opponent = opponent
+    def __init__(self, name, match):
+        self.won = wonMatch(name, match)
+        self.opponent = match.opponent if match.reporter == name else match.reporter
+    def __str__(self):
+        return str(self.won) + " against " + self.opponent

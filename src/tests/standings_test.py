@@ -39,7 +39,9 @@ def test_multipleMatches_getsPoints():
 
     standings = calculateStandings(results)
 
+    print(standings["lsv"])
     assert(standings["lsv"] == 4)
+    print(standings["finkel"])
     assert(standings["finkel"] == 4)
 
 def test_winLoss():
@@ -49,7 +51,18 @@ def test_winLoss():
     assert(wonMatch("lsv", match) == False)
     assert(wonMatch("frankerz", match) == False)
 
-def test_flatten_oneMatch():
-    flattened = flattenMatches(MatchRecord("lsv", 1, "finkel", 2))
+def test_flatten():
+    matches = [
+        MatchRecord("lsv", 1, "finkel", 2),
+        MatchRecord("lsv", 2, "finkel", 0),
+        ]
 
-    assert(len(flattened) == 2)
+    records = {"lsv" : [], "finkel" : []}
+    assert(len(records["lsv"]) == 0)
+    assert(len(records["finkel"]) == 0)
+
+    flattenMatches(matches, records)
+
+    assert(len(records) == 2)
+    assert(len(records["lsv"]) == 2)
+    assert(len(records["finkel"]) == 2)
