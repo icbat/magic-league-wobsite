@@ -10,14 +10,8 @@ def calculateStandings(matchSlips):
     standings = {}
     for player in records:
         points = 0
-        print
-        print player
-
         for match in records[player]:
-            print match
-            print "points before: " + str(points)
             points = points + (3 if match.won else 1)
-            print "points after: " + str(points)
         standings[player] = points
 
     return standings
