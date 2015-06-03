@@ -1,15 +1,15 @@
-from standings import calculateStandings, wonMatch, flattenMatches
+from standings import calculatePoints, wonMatch, flattenMatches
 from match import MatchRecord
 
 def test_noMatches():
-    standings = calculateStandings([])
+    standings = calculatePoints([])
 
     assert(len(standings) == 0)
 
 def test_oneMatch_getsReported():
     results = [MatchRecord("lsv", 1, "finkel", 2)]
 
-    standings = calculateStandings(results)
+    standings = calculatePoints(results)
 
     assert(len(standings) == 2)
 
@@ -19,14 +19,14 @@ def test_multipleMatches_dontCreateDuplicates():
         MatchRecord("lsv", 2, "finkel", 0),
         ]
 
-    standings = calculateStandings(results)
+    standings = calculatePoints(results)
 
     assert(len(standings) == 2)
 
 def test_countWins():
     results = [MatchRecord("lsv", 1, "finkel", 2)]
 
-    standings = calculateStandings(results)
+    standings = calculatePoints(results)
 
     assert(standings["lsv"] == 1)
     assert(standings["finkel"] == 3)
@@ -37,7 +37,7 @@ def test_multipleMatches_getsPoints():
         MatchRecord("lsv", 2, "finkel", 0),
         ]
 
-    standings = calculateStandings(results)
+    standings = calculatePoints(results)
 
     print(standings["lsv"])
     assert(standings["lsv"] == 4)

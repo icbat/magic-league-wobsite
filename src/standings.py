@@ -1,10 +1,10 @@
 def get():
     # get data
     # then work on it
-    return calculateStandings()
+    return calculatePoints()
 
 """takes a list of MatchRecords"""
-def calculateStandings(matchSlips):
+def calculatePoints(matchSlips):
     records = setupEmptyStandings(matchSlips)
     flattenMatches(matchSlips, records)
     standings = {}
