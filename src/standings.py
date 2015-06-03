@@ -1,7 +1,8 @@
+import datasource
+
 def get():
-    # get data
-    # then work on it
-    return calculatePoints()
+    matchSlips = datasource.getMatchSlips()
+    return calculatePoints(matchSlips)
 
 """takes a list of MatchRecords"""
 def calculatePoints(matchSlips):
