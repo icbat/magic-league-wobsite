@@ -1,4 +1,5 @@
 import datasource
+from operator import itemgetter
 
 
 def get():
@@ -21,7 +22,7 @@ def calculate_points(match_slips):
         points += 2 * len(opponents)
         standings.append((player, points))
 
-    return standings
+    return sorted(standings, reverse=True, key=lambda tup: tup[1])
 
 
 def setup_empty_standings(match_slips):
