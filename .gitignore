@@ -63,3 +63,9 @@ pip-selfcheck.json
 bin/
 include/
 local/
+
+# Local keys/data
+secret
+*.xml
+.idea/.name
+*.iml

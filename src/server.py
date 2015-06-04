@@ -2,15 +2,20 @@ import argparse
 
 from flask import Flask
 from flask import render_template
+import standings
+
 app = Flask(__name__)
+
 
 @app.route("/")
 def hello():
     return render_template("landing.html")
 
+
 @app.route("/standings")
 def get_standings():
-    return render_template("standings.html")
+    results = standings.get()
+    return render_template("standings.html", standings=results)
 
 
 parser = argparse.ArgumentParser()
@@ -21,7 +26,7 @@ args = parser.parse_args()
 
 if __name__ == "__main__":
     app.run(
-    	host = args.ip,
-    	debug = args.debug,
-    	port = args.port,
-    	)
+        host=args.ip,
+        debug=args.debug,
+        port=args.port,
+    )
