@@ -1,9 +1,13 @@
 {% extends "layout.html" %}
 {% block body %}
 
+{% if standings %}
 <ol>
     {% for player in standings %}
     <li>{{ player[0] }} - {{player[1]}}</li>
 {% endfor %}
 </ol>
+{% else %}
+Aww, no standings yet. Play some matches!
+{% endif %}
 {% endblock %}
