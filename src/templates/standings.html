@@ -2,8 +2,8 @@
 {% block body %}
 
 <ol>
-{% for player, points in standings.iteritems() %}
-    <li>{{ player|e }} - {{ points|e }}</li>
+    {% for player in standings %}
+    <li>{{ player[0] }} - {{player[1]}}</li>
 {% endfor %}
 </ol>
 {% endblock %}

@@ -10,7 +10,7 @@ def calculate_points(match_slips):
     """takes a list of MatchRecords"""
     records = setup_empty_standings(match_slips)
     flatten_matches(match_slips, records)
-    standings = {}
+    standings = []
     for player in records:
         points = 0
 
@@ -19,7 +19,7 @@ def calculate_points(match_slips):
             points += 3 if match.won else 1
             opponents.add(match.opponent)
         points += 2 * len(opponents)
-        standings[player] = points
+        standings.append((player, points))
 
     return standings
 
