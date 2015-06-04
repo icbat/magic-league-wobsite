@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
 <head>
-    <link rel="stylesheet" href="/static/style.css" />
+    <link rel="stylesheet" href="/static/style.css"/>
 </head>
 <body>
 <header>
@@ -12,7 +12,9 @@
         <li><a href="#">Match Report</a></li>
         <li><a href="#">Rules</a></li>
 </header>
-{% block body %}{% endblock %}
+<div id="content">
+    {% block body %}{% endblock %}
+</div>
 <footer>
     Code on <a href="https://github.com/icbat/magic-league-wobsite">GitHub</a>. Made with <3 by <a
         href="https://www.twitter.com/icbat">@icbat</a>

@@ -1,3 +1,32 @@
+header{
+    background-color: #333;
+}
+
+#content {
+    margin:20px;
+}
+
 body {
-    background-color: #f00;
+    margin: 0;
+    padding: 0;
+    background-color: #fff;
+    color: #000;
+}
+
+header, footer {
+    padding: 20px;
+}
+
+a, a:visited, a:hover {
+    text-decoration:none;
+    color: #faa;
+}
+
+header ul, header li {
+    display: inline;
+    padding:0;
+}
+
+header li {
+padding: 15px;
 }
