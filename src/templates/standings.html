@@ -1,4 +1,9 @@
 {% extends "layout.html" %}
 {% block body %}
-hello! This is standings
+
+<ol>
+{% for player, points in standings.iteritems() %}
+    <li>{{ player|e }} - {{ points|e }}</li>
+{% endfor %}
+</ol>
 {% endblock %}
