@@ -66,3 +66,6 @@ local/
 
 # Local keys/data
 secret
+*.xml
+.idea/.name
+*.iml
