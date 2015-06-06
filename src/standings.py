@@ -1,5 +1,4 @@
 import datasource
-from operator import itemgetter
 
 
 def get():
