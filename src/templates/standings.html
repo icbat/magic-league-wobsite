@@ -1,16 +1,23 @@
 {% extends "layout.html" %}
 {% block body %}
+<h3>Note that standings are only updated as fast as Google Drive wants to re-publish.</h3>
+
+It often takes a few minutes to load.<br/><br/>
 
 {% if standings %}
 <table>
     <tr>
         <th>Player</th>
         <th>Points</th>
+        <th>Matches Played</th>
+        <th>Matches Won</th>
     </tr>
     {% for player in standings %}
     <tr>
         <td>{{ player[0] }}</td>
-        <td>{{player[1]}}</td>
+        <td>{{ player[1] }}</td>
+        <td>{{ player[2] }}</td>
+        <td>{{ player[3] }}</td>
     </tr>
     {% endfor %}
 </table>
