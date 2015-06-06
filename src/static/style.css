@@ -2,6 +2,10 @@
     margin-bottom: 20px;
 }
 
+.q {
+    font-weight:bold;
+}
+
 header{
     background-color: #333;
     border-bottom: 3px solid #005AFF;
