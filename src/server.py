@@ -11,9 +11,9 @@ app = Flask(__name__)
 def hello():
     return render_template("landing.html")
 
-@app.route("/rules")
-def rules():
-    return render_template("rules.html")
+@app.route("/faq")
+def faq():
+    return render_template("faq.html")
 
 @app.route("/standings")
 def get_standings():
