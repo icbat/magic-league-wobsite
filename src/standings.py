@@ -16,11 +16,18 @@ def calculate_points(match_slips):
         points = 0
 
         opponents = set([])
+        wins = 0
+        played = 0
         for match in records[player]:
-            points += 3 if match.won else 1
+            played += 1
             opponents.add(match.opponent)
+            if match.won:
+                points +=3
+                wins += 1
+            else:
+                points += 1
         points += 2 * len(opponents)
-        standings.append((player, points))
+        standings.append((player, points, played, wins))
 
     return sorted(standings, reverse=True, key=lambda tup: tup[1])
 

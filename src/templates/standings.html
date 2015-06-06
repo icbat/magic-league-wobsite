@@ -6,11 +6,15 @@
     <tr>
         <th>Player</th>
         <th>Points</th>
+        <th>Matches Played</th>
+        <th>Matches Won</th>
     </tr>
     {% for player in standings %}
     <tr>
         <td>{{ player[0] }}</td>
-        <td>{{player[1]}}</td>
+        <td>{{ player[1] }}</td>
+        <td>{{ player[2] }}</td>
+        <td>{{ player[3] }}</td>
     </tr>
     {% endfor %}
 </table>
