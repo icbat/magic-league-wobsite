@@ -11,6 +11,7 @@ It often takes a few minutes to load.<br/><br/>
         <th>Points</th>
         <th>Total Played</th>
         <th>Won</th>
+        <th>Bonus Points for Unique Opponents
         <th>Opponents Played</th>
     </tr>
     {% for player in standings %}
@@ -20,6 +21,7 @@ It often takes a few minutes to load.<br/><br/>
         <td>{{ player[2] }}</td>
         <td>{{ player[3] }}</td>
         <td>{{ player[4] }}</td>
+        <td>{{ player[5] }}</td>
     </tr>
     {% endfor %}
 </table>
