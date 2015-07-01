@@ -29,7 +29,7 @@ def calculate_points(match_slips):
                 points += 1
         points += 2 * len(opponents)
         print player + " has played " + str(len(opponents)) + " unique opponents"
-        standings.append((player, points, played, wins))
+        standings.append((player, points, played, wins, opponents))
 
     return sorted(standings, reverse=True, key=lambda tup: tup[1])
 
