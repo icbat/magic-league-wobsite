@@ -30,10 +30,12 @@ def calculate_points(match_slips):
         uniquePlayerPoints = 2 * len(opponents)
         points += uniquePlayerPoints
         print player + " has played " + str(len(opponents)) + " unique opponents"
-        standings.append((player, points, played, wins, played - wins, opponents))
+        standings.append((player, points, played, wins, played - wins, formatSet(opponents)))
 
     return sorted(standings, reverse=True, key=lambda tup: tup[1])
 
+def formatSet(aSet):
+    return ", ".join(aSet)
 
 def setup_empty_standings(match_slips):
     standings = {}
