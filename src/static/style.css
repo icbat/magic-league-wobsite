@@ -46,3 +46,7 @@ header ul, header li {
 header li {
 padding: 15px;
 }
+
+td {
+  text-align: center;
+}
