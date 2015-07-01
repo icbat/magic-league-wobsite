@@ -50,3 +50,7 @@ padding: 15px;
 td {
   text-align: center;
 }
+
+td, th {
+  padding-right: 20px;
+}
