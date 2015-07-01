@@ -63,6 +63,8 @@ pip-selfcheck.json
 bin/
 include/
 local/
+Scripts/
+man/
 
 # Local keys/data
 secret

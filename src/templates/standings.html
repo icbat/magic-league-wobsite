@@ -9,15 +9,17 @@ It often takes a few minutes to load.<br/><br/>
     <tr>
         <th>Player</th>
         <th>Points</th>
-        <th>Matches Played</th>
-        <th>Matches Won</th>
+        <th>Games Played</th>
+        <th>Record</th>
+        <th>Opponents Played</th>
     </tr>
     {% for player in standings %}
     <tr>
         <td>{{ player[0] }}</td>
         <td>{{ player[1] }}</td>
         <td>{{ player[2] }}</td>
-        <td>{{ player[3] }}</td>
+        <td>{{ player[3] }} - {{ player[4] }}</td>
+        <td>{{ player[5] }}</td>
     </tr>
     {% endfor %}
 </table>

@@ -8,10 +8,12 @@ def get():
 
 def calculate_points(match_slips):
     """takes a list of MatchRecords"""
+    print "Calcuating points!"
     records = setup_empty_standings(match_slips)
     flatten_matches(match_slips, records)
     standings = []
     for player in records:
+        print "Found " + str(len(records)) + " players"
         points = 0
 
         opponents = set([])
@@ -25,11 +27,15 @@ def calculate_points(match_slips):
                 wins += 1
             else:
                 points += 1
-        points += 2 * len(opponents)
-        standings.append((player, points, played, wins))
+        uniquePlayerPoints = 2 * len(opponents)
+        points += uniquePlayerPoints
+        print player + " has played " + str(len(opponents)) + " unique opponents"
+        standings.append((player, points, played, wins, played - wins, formatSet(opponents)))
 
     return sorted(standings, reverse=True, key=lambda tup: tup[1])
 
+def formatSet(aSet):
+    return ", ".join(aSet)
 
 def setup_empty_standings(match_slips):
     standings = {}

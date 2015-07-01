@@ -8,6 +8,7 @@ print "found match data location!"
 
 
 def parse_match_slips(raw_match_slips):
+    print "Parsing match slips. Found " + str(len(raw_match_slips))
     slips = []
     for slip in raw_match_slips:
         fields = slip.split("</td>")
@@ -33,6 +34,7 @@ def get_match_slips():
 
 
 def get_raw_match_slips():
+    print "Getting match slips from " + DATA_STORE_URL
     page = requests.get(DATA_STORE_URL)
     html = page.content
     html = html.split("<tbody>")[1]
