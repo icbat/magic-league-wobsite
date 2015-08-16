@@ -19,9 +19,9 @@ def parse_match_slips(raw_match_slips):
                 slip_fields.append(parsed)
 
         if len(slip_fields) == 5:
-            reporter = slip_fields[1]
+            reporter = slip_fields[1].strip()
             wins = slip_fields[2]
-            opponent = slip_fields[3]
+            opponent = slip_fields[3].strip()
             losses = slip_fields[4]
             slips.append(MatchRecord(reporter, wins, opponent, losses))
 
