@@ -17,7 +17,7 @@ def parse_match_slips(raw_match_slips):
         fields = slip.split("</td>")
         slip_fields = []
         for field in fields:
-            parsed = field.split(">")[-1]
+            parsed = field.split(">")[-1].strip()
             if len(parsed) > 0:
                 slip_fields.append(parsed)
 

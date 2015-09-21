@@ -32,3 +32,11 @@ def test_parsing_oneRow_missingColumnWontRecord():
     slips = datasource.parse_match_slips(raw_rows)
 
     assert(len(slips) == 0)
+
+
+def test_parsing_oneRow_trimsColumns():
+    row = "<td>       </td><td>b</td><td>c</td><td>d</td><td>e</td>"
+    raw_rows = [row]
+    slips = datasource.parse_match_slips(raw_rows)
+
+    assert(len(slips) == 0)
