@@ -2,7 +2,14 @@ import datasource
 
 
 def get():
-    match_slips = datasource.get_match_slips()
+    print "Looking for environment variable MATCH_DATA for data store..."
+    try:
+        DATA_STORE_URL = environ['MATCH_DATA']
+        print "found match data location!"
+    except:
+        print "WARNING! Failed to find a MATCH_DATA URL! Will not be able to get data!"
+
+    match_slips = DataSource(DATA_STORE_URL).get_match_slips()
     return calculate_points(match_slips)
 
 
