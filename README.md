@@ -9,7 +9,7 @@ The match history is backed by Google Docs.
 
 ### Environment Variables
 
-This application needs two environment variables to run:
+This application needs one environment variable to run:
 
 * MATCH_DATA - a URL to a google docs spreadsheet backing match reports. Parsing is currently tightly coupled to that =)
 
