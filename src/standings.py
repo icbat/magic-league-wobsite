@@ -1,6 +1,4 @@
-points_per_win = 3
-points_per_loss = 1
-points_per_unique_opponent = 2
+from config import points_per_win, points_per_loss, points_per_unique_opponent
 
 def calculate_points(match_slips):
     """takes a list of MatchRecords"""
@@ -11,7 +9,7 @@ def calculate_points(match_slips):
     print "Found " + str(len(records)) + " players"
     for player in records:
         player_records = records[player]
-        
+
         matches_played = count_matches(player_records)
         opponents = find_unique_opponents(player_records)
         wins = count_wins(player_records)
