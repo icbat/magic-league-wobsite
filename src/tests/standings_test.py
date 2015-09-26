@@ -1,9 +1,9 @@
 from standings import calculate_points, won_match, flatten_matches
 from match import MatchRecord
-
+from config import Config
 
 def test_noMatches():
-    standings = calculate_points([])
+    standings = calculate_points([], Config())
 
     assert (len(standings) == 0)
 
@@ -11,7 +11,7 @@ def test_noMatches():
 def test_oneMatch_getsReported():
     results = [MatchRecord("lsv", 1, "finkel", 2)]
 
-    standings = calculate_points(results)
+    standings = calculate_points(results, Config())
 
     assert (len(standings) == 2)
 
@@ -22,7 +22,7 @@ def test_multipleMatches_dontCreateDuplicates():
         MatchRecord("lsv", 2, "finkel", 0),
     ]
 
-    standings = calculate_points(results)
+    standings = calculate_points(results, Config())
 
     assert (len(standings) == 2)
 
@@ -30,7 +30,7 @@ def test_multipleMatches_dontCreateDuplicates():
 def test_countWins():
     results = [MatchRecord("lsv", 1, "finkel", 2)]
 
-    standings = calculate_points(results)
+    standings = calculate_points(results, Config())
 
     assert (find_points_by_name("lsv", standings) == 3)
     assert (find_points_by_name("finkel", standings) == 5)
@@ -42,7 +42,7 @@ def test_multipleMatches_getsPoints():
         MatchRecord("lsv", 2, "finkel", 0),
     ]
 
-    standings = calculate_points(results)
+    standings = calculate_points(results, Config())
 
     assert (find_points_by_name("lsv", standings) == 6)
     assert (find_points_by_name("finkel", standings) == 6)
@@ -54,7 +54,7 @@ def test_multipleOpponents_countedCorrectly():
         MatchRecord("lsv", 2, "pv", 0),
     ]
 
-    standings = calculate_points(results)
+    standings = calculate_points(results, Config())
 
     assert (find_points_by_name("lsv", standings) == 8)
 

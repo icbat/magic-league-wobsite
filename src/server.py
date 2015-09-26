@@ -5,6 +5,7 @@ from flask import Flask
 from flask import render_template
 import standings
 from datasource import DataSource
+from config import Config
 
 app = Flask(__name__)
 
@@ -19,8 +20,9 @@ def faq():
 
 @app.route("/standings")
 def get_standings():
+    config = Config().parse("./src/config.ini")
     match_slips = get_datasource().get_match_slips()
-    results = standings.calculate_points(match_slips)
+    results = standings.calculate_points(match_slips, config)
     return render_template("standings.html", standings=results)
 
 def get_datasource():

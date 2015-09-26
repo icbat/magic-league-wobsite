@@ -1,6 +1,4 @@
-from config import points_per_win, points_per_loss, points_per_unique_opponent
-
-def calculate_points(match_slips):
+def calculate_points(match_slips, config):
     """takes a list of MatchRecords"""
     print "Calcuating points!"
     records = setup_empty_standings(match_slips)
@@ -14,8 +12,8 @@ def calculate_points(match_slips):
         opponents = find_unique_opponents(player_records)
         wins = count_wins(player_records)
 
-        points = calculate_match_points(player_records)
-        uniquePlayerPoints = points_per_unique_opponent * len(opponents)
+        points = calculate_match_points(player_records, config)
+        uniquePlayerPoints = config.points_per_unique_opponent() * len(opponents)
         points += uniquePlayerPoints
 
         print player + " has played " + str(len(opponents)) + " unique opponents"
@@ -39,13 +37,13 @@ def count_wins(records):
             wins += 1
     return wins
 
-def calculate_match_points(records):
+def calculate_match_points(records, config):
     points = 0
     for match in records:
         if match.won:
-            points += points_per_win
+            points += config.points_per_win()
         else:
-            points += points_per_loss
+            points += config.points_per_loss()
     return points
 
 def formatSet(aSet):
