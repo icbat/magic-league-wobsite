@@ -1,4 +1,3 @@
-from os import environ
 import requests
 from match import MatchRecord
 
@@ -28,13 +27,13 @@ class DataSource:
 
 
     def get_match_slips(self):
-        raw_match_slips = get_raw_match_slips()
-        return parse_match_slips(raw_match_slips)
+        raw_match_slips = self.get_raw_match_slips()
+        return self.parse_match_slips(raw_match_slips)
 
 
     def get_raw_match_slips(self):
         print "Getting match slips from " + self.DATA_STORE_URL
-        page = requests.get(DATA_STORE_URL)
+        page = requests.get(self.DATA_STORE_URL)
         html = page.content
         html = html.split("<tbody>")[1]
         html = html.split("</tbody>")[0]
