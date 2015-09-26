@@ -1,3 +1,7 @@
+points_per_win = 3
+points_per_loss = 1
+points_per_unique_opponent = 2
+
 def calculate_points(match_slips):
     """takes a list of MatchRecords"""
     print "Calcuating points!"
@@ -7,22 +11,21 @@ def calculate_points(match_slips):
     for player in records:
         print "Found " + str(len(records)) + " players"
         points = 0
-
         opponents = set([])
         wins = 0
-        played = 0
+        matches_played = 0
         for match in records[player]:
-            played += 1
+            matches_played += 1
             opponents.add(match.opponent)
             if match.won:
-                points +=3
+                points += points_per_win
                 wins += 1
             else:
-                points += 1
-        uniquePlayerPoints = 2 * len(opponents)
+                points += points_per_loss
+        uniquePlayerPoints = points_per_unique_opponent * len(opponents)
         points += uniquePlayerPoints
         print player + " has played " + str(len(opponents)) + " unique opponents"
-        standings.append((player, points, played, wins, played - wins, formatSet(opponents)))
+        standings.append((player, points, matches_played, wins, matches_played - wins, formatSet(opponents)))
 
     return sorted(standings, reverse=True, key=lambda tup: tup[1])
 
