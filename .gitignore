@@ -71,3 +71,4 @@ secret
 *.xml
 .idea/.name
 *.iml
+nosetests.json
